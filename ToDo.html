@@ -27,6 +27,20 @@
             </div>
           </div>
         </div>
+        <div class="side-logo-container">
+          <div class="logo-container">
+            <span class="material-symbols-rounded"> settings </span>
+          </div>
+          <div class="logo-container">
+            <span class="material-symbols-rounded"> question_mark </span>
+          </div>
+          <div class="logo-container">
+            <span class="material-symbols-rounded"> campaign </span>
+          </div>
+          <div class="logo-container">
+            <span class="material-symbols-rounded"> account_circle </span>
+          </div>
+        </div>
       </div>
       <div class="bottom-container">
         <div class="side-container">
@@ -103,15 +117,58 @@
               <div class="my-day">
                 <p>My Day</p>
               </div>
+              <div class="more-logo">
+                <span class="material-symbols-rounded"> more_horiz </span>
+              </div>
             </div>
-            <div class="top-tool-bar-subline-container"></div>
+            <div class="top-tool-bar-subline-container">
+              <p id="today-date"></p>
+            </div>
           </div>
           <div class="task-container">
-            <div class="add-task-container"></div>
+            <div class="add-task-container">
+              <div></div>
+              <div class="task-detail">
+                <input type="text" placeholder="Add a task" />
+              </div>
+            </div>
             <div class="add-task-creation-container"></div>
           </div>
         </div>
       </div>
     </div>
   </body>
+  <script>
+    var today = new Date();
+    var daylist = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday ",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    var monthlist = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    var date =
+      daylist[today.getDay()] +
+      ", " +
+      monthlist[today.getMonth()] +
+      " " +
+      today.getDate();
+    document.getElementById("today-date").innerHTML = date;
+  </script>
 </html>

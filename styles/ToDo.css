@@ -3,7 +3,6 @@ body {
 }
 
 .container {
-  /* background-color: aquamarine; */
   width: 1848px;
   height: 962px;
 }
@@ -16,13 +15,11 @@ body {
 }
 
 .bottom-container {
-  /* background-color: cadetblue; */
   width: 1848px;
   height: 913px;
 }
 
 .all-apps-button-container {
-  /* background-color: blue; */
   width: 48px;
   height: 48px;
   display: inline-block;
@@ -30,6 +27,17 @@ body {
   text-align: center;
 }
 
+.side-logo-container .logo-container {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+
+.side-logo-container .logo-container:first-child {
+  margin-left: 30px;
+}
 .top-container .material-symbols-rounded {
   width: 20px;
   height: 20px;
@@ -37,7 +45,6 @@ body {
 }
 
 .todo-container {
-  /* background-color: darkmagenta; */
   width: 63px;
   height: 48px;
   display: inline-block;
@@ -51,17 +58,16 @@ body {
 }
 
 .search-box-container {
-  /* background-color: rgb(88, 88, 88); */
-  width: 1546px;
+  width: 1480px;
   height: 48px;
   display: inline-block;
   text-align: center;
+  vertical-align: top;
 }
 
 .search-logo {
   display: inline-block;
   color: #2564cf;
-  /* vertical-align: top; */
 }
 
 .search-tool-bar {
@@ -75,9 +81,7 @@ body {
 .search-tool-bar input {
   margin: 0;
   border: 0;
-  border: 0;
   outline: none;
-  /* padding: 5px; */
 }
 .search-tool-bar input::placeholder {
   color: transparent;
@@ -100,51 +104,46 @@ input:focus::placeholder {
   border-radius: 5px;
   border: 0;
   text-align: left;
-  /* vertical-align: middle; */
-  /* padding-top: 4px; */
-  /* padding-right: 25px; */
-  /* padding-bottom: 4px; */
   margin-top: 6px;
-  margin-right: 20px;
+  margin-left: 40px;
   background-color: white;
 }
 
+.side-logo-container {
+  width: 240px;
+  height: 48px;
+  display: inline-block;
+}
+
 .side-container {
-  /* background-color: rgb(58, 41, 173); */
   width: 290px;
   height: 913px;
   display: inline-block;
   vertical-align: top;
+  border-right: 1px groove rgb(224, 222, 222);
 }
 
 .main-container {
-  background-color: green;
-  width: 1552px;
+  width: 1551px;
   height: 913px;
   display: inline-block;
-  /* vertical-align: top; */
 }
 
 .side-header-container {
-  /* background-color: rgb(82, 66, 89); */
   width: 280px;
   height: 48px;
   margin-top: 16px;
-  /* margin-left: 8px; */
-  /* margin-bottom: 16px; */
-  /* padding-left: 24px;
-  padding-right: 24px; */
   display: inline-block;
 }
 
 .side-header-container .material-symbols-rounded {
-  color: #a1a0a0;
+  color: rgb(59, 59, 59);
   margin-left: 24px;
   margin-top: 12px;
 }
 
 .side-menu-option-container .material-symbols-rounded {
-  color: #a1a0a0;
+  color: rgb(59, 59, 59);
   margin-left: 24px;
   margin-top: 14px;
   font-size: 20px;
@@ -157,21 +156,20 @@ input:focus::placeholder {
   font-size: 14px;
 }
 
-/* .side-bar-container {
-  background-color: rgb(55, 43, 55);
-  width: 280px;
-  height: 176px;
-} */
-
 .side-menu-option-container {
-  /* background-color: rgb(72, 45, 91); */
   width: 290px;
   height: 44px;
   display: inline-block;
 }
 
+.all-apps-button-container:hover,
+.side-menu-option-container:hover,
+.logo-container:hover,
+.task-adder:hover {
+  background-color: rgb(228, 226, 226);
+}
+
 .task-adder {
-  /* background-color: rgb(69, 177, 42); */
   width: 290px;
   height: 44px;
   display: inline-block;
@@ -198,6 +196,8 @@ input:focus::placeholder {
   height: 36px;
   width: 150px;
   border: 0;
+  background: none;
+  outline: none;
 }
 
 .create-group {
@@ -209,45 +209,44 @@ input:focus::placeholder {
 }
 
 .bottom-logo-container {
-  /* background-color: powderblue; */
   width: 290px;
   height: 48px;
   display: inline-block;
   margin-top: 518px;
-  /* vertical-align: baseline; */
 }
 
 .logo-container {
-  /* background-color: fuchsia; */
   width: 53px;
   height: 48px;
   text-align: center;
   display: inline-block;
 }
 
-.logo-container .material-symbols-rounded {
-  color: #a1a0a0;
+.bottom-logo-container .logo-container .material-symbols-rounded {
+  color: rgb(59, 59, 59);
   padding-top: 14px;
   padding-bottom: 14px;
   font-size: 20px;
 }
 
+.bottom-logo-container .logo-container:nth-child(4) .material-symbols-rounded {
+  transform: rotate(40deg);
+}
 .top-header-container {
-  background-color: powderblue;
   width: 1552px;
   height: 90px;
   display: inline-block;
 }
 
-/* .task-container {
-    background-color: dodgerblue;
-    width: 1552px;
-    height: 809px;
-    display: inline-block;
-} */
+.task-container {
+  /* background-color: dodgerblue; */
+  width: 1552px;
+  height: 809px;
+  display: inline-block;
+}
 
 .top-tool-bar-container {
-  background-color: deeppink;
+  /* background-color: deeppink; */
   width: 1552px;
   height: 48px;
   display: inline-block;
@@ -264,7 +263,7 @@ input:focus::placeholder {
 .my-day {
   display: inline-block;
   vertical-align: top;
-  padding-top: 20px;
+  padding-top: 16px;
 }
 
 .my-day p {
@@ -273,23 +272,53 @@ input:focus::placeholder {
   font-size: 18px;
 }
 
+.more-logo {
+  margin-top: 14px;
+  margin-left: 6px;
+  margin-right: 6px;
+  display: inline-block;
+}
+
 .top-tool-bar-subline-container {
-  background-color: greenyellow;
+  /* background-color: greenyellow; */
   width: 1552px;
   height: 21px;
   display: inline-block;
 }
 
-/* .add-task-container {
-    background-color: limegreen;
-    width: 1552px;
-    height:  52px;
-    display: inline-block;
+.top-tool-bar-subline-container #today-date {
+  padding-left: 28px;
+  font-size: 10px;
+}
+
+.top-tool-bar-subline-container p {
+  margin: 0;
+}
+.add-task-container {
+  /* background-color: limegreen; */
+  width: 1510px;
+  height: 52px;
+  display: inline-block;
+  margin-top: 16px;
+  margin-left: 20px;
+}
+
+.task-detail {
+  padding-top: 10px;
+}
+
+.task-detail input {
+  display: inline-block;
+  height: 36px;
+  width: 1000px;
+  border: 0;
+  background: none;
+  outline: none;
 }
 
 .add-task-creation-container {
-    background-color: mediumorchid;
-    width: 1552px;
-    height: 45px;
-    display: inline-block;
-} */
+  /* background-color: mediumorchid; */
+  width: 1552px;
+  height: 45px;
+  display: inline-block;
+}
