@@ -6,9 +6,10 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
     <link rel="stylesheet" href="styles/ToDo.css" />
+    <script src="scripts/ToDo.js"></script>
     <title>ToDo</title>
   </head>
-  <body>
+  <body onload="currentDate()">
     <div class="container">
       <div class="top-container">
         <div class="all-apps-button-container">
@@ -138,37 +139,4 @@
       </div>
     </div>
   </body>
-  <script>
-    var today = new Date();
-    var daylist = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday ",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    var monthlist = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    var date =
-      daylist[today.getDay()] +
-      ", " +
-      monthlist[today.getMonth()] +
-      " " +
-      today.getDate();
-    document.getElementById("today-date").innerHTML = date;
-  </script>
 </html>
