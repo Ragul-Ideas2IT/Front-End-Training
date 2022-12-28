@@ -142,6 +142,7 @@ input:focus::placeholder {
   margin-top: 12px;
 }
 
+.task .material-symbols-rounded,
 .side-menu-option-container .material-symbols-rounded {
   color: rgb(59, 59, 59);
   margin-left: 24px;
@@ -154,6 +155,7 @@ input:focus::placeholder {
   padding-left: 12px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
+  vertical-align: top;
 }
 
 .side-menu-option-container {
@@ -170,6 +172,12 @@ input:focus::placeholder {
 }
 
 .task-adder {
+  /* width: 10px; */
+  height: 44px;
+  display: inline-block;
+}
+
+.task {
   width: 290px;
   height: 44px;
   display: inline-block;
@@ -186,7 +194,7 @@ input:focus::placeholder {
 .task-input {
   display: inline-block;
   height: 40px;
-  width: 110px;
+  width: 180px;
   vertical-align: top;
   padding-top: 6px;
 }
@@ -204,7 +212,7 @@ input:focus::placeholder {
   color: #a1a0a0;
   width: 48px;
   width: 40px;
-  padding-left: 80px;
+  padding-left: 10px;
   display: inline-block;
 }
 

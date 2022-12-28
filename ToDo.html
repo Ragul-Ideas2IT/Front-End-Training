@@ -6,10 +6,9 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
     <link rel="stylesheet" href="styles/ToDo.css" />
-    <script src="scripts/ToDo.js"></script>
     <title>ToDo</title>
   </head>
-  <body onload="currentDate()">
+  <body>
     <div class="container">
       <div class="top-container">
         <div class="all-apps-button-container">
@@ -81,16 +80,20 @@
           <hr />
           <div class="task-adder">
             <div class="add-task">
-              <span class="material-symbols-rounded"> add </span>
+              <span id="add" class="material-symbols-rounded"> add </span>
             </div>
-            <div class="task-input">
-              <input type="text" placeholder="New list" />
-            </div>
-            <div class="create-group">
-              <span class="material-symbols-rounded"> group_add </span>
+            <div id="newtask" class="task-input">
+              <input
+                type="text"
+                placeholder="New list"
+                onkeypress="addTask()"
+              />
             </div>
           </div>
-          <div class="tasks"></div>
+          <div class="create-group">
+            <span class="material-symbols-rounded"> group_add </span>
+          </div>
+          <div id="tasks" class="task"></div>
           <div class="bottom-logo-container">
             <div class="logo-container">
               <span class="material-symbols-rounded"> mail </span>
@@ -138,5 +141,6 @@
         </div>
       </div>
     </div>
+    <script src="scripts/ToDo.js"></script>
   </body>
 </html>
