@@ -35,12 +35,28 @@ function currentDate() {
 }
 
 function addTask() {
-  document.querySelector("#tasks").innerHTML += `
-     <div class="task">
-     <span class="material-symbols-rounded"> list </span>
-         <span id="task-name">
-             ${document.querySelector("#newtask input").value}
-         </span>
-     </div>
- `;
+  var input = document.getElementById("task-input");
+  input.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      var list = document.createElement("li");
+      var div = document.createElement("div");
+      list.innerHTML = '<span class="material-symbols-rounded"> list </span>';
+      var inputFromUser = document.createTextNode(
+        document.getElementById("task-input").value
+      );
+      if (inputFromUser == "") {
+        div.appendChild("Untitled");
+      } else {
+        div.appendChild(inputFromUser);
+      }
+      list.appendChild(div);
+      var newTask = document.getElementById("task-list");
+      newTask.appendChild(list);
+      newTask.insertBefore(list, newTask.children[6]);
+    }
+  });
+}
+
+function changeMenu(id) {
+  document.getElementById('menu').innerHTML = id;
 }

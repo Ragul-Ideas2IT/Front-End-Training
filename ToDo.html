@@ -47,53 +47,53 @@
           <div class="side-header-container">
             <span class="material-symbols-rounded"> menu </span>
           </div>
-          <div class="side-menu-option-container">
-            <span class="material-symbols-rounded"> wb_sunny </span>
-            <div class="menu-detail">
-              <p>My Day</p>
-            </div>
-          </div>
-          <div class="side-menu-option-container">
-            <span class="material-symbols-rounded"> star </span>
-            <div class="menu-detail">
-              <p>Important</p>
-            </div>
-          </div>
-          <div class="side-menu-option-container">
-            <span class="material-symbols-rounded"> calendar_month </span>
-            <div class="menu-detail">
-              <p>Planned</p>
-            </div>
-          </div>
-          <div class="side-menu-option-container">
-            <span class="material-symbols-rounded"> person </span>
-            <div class="menu-detail">
-              <p>Assigned to me</p>
-            </div>
-          </div>
-          <div class="side-menu-option-container">
-            <span class="material-symbols-rounded"> home </span>
-            <div class="menu-detail">
-              <p>Tasks</p>
-            </div>
-          </div>
-          <hr />
-          <div class="task-adder">
-            <div class="add-task">
+          <ol id="task-list">
+            <div>
+            <li class="side-menu-option-container" onclick="changeMenu(this)">
+              <span class="material-symbols-rounded"> wb_sunny </span>
+              <div class="menu-detail">
+                <p>My Day</p>
+              </div>
+            </li>
+            <li class="side-menu-option-container" onclick="changeMenu(this)">
+              <span class="material-symbols-rounded"> star </span>
+              <div class="menu-detail">
+                <p>Important</p>
+              </div>
+            </li>
+            <li class="side-menu-option-container">
+              <span class="material-symbols-rounded"> calendar_month </span>
+              <div class="menu-detail">
+                <p>Planned</p>
+              </div>
+            </li>
+            <li class="side-menu-option-container">
+              <span class="material-symbols-rounded"> person </span>
+              <div class="menu-detail">
+                <p>Assigned to me</p>
+              </div>
+            </li>
+            <li class="side-menu-option-container">
+              <span class="material-symbols-rounded"> home </span>
+              <div class="menu-detail">
+                <p>Tasks</p>
+              </div>
+            </li>
+              <hr />
+            <li class="task-adder">
               <span id="add" class="material-symbols-rounded"> add </span>
-            </div>
-            <div id="newtask" class="task-input">
-              <input
-                type="text"
-                placeholder="New list"
-                onkeypress="addTask()"
-              />
-            </div>
+              <div>
+                <input
+                  id="task-input"
+                  type="text"
+                  placeholder="New list"
+                  onmousedown="addTask()"
+                />
+              </div>
+              <span class="material-symbols-rounded"> group_add </span>
+            </li>
           </div>
-          <div class="create-group">
-            <span class="material-symbols-rounded"> group_add </span>
-          </div>
-          <div id="tasks" class="task"></div>
+          </ol>
           <div class="bottom-logo-container">
             <div class="logo-container">
               <span class="material-symbols-rounded"> mail </span>
@@ -114,7 +114,7 @@
         </div>
         <div class="main-container">
           <div class="top-header-container">
-            <div class="top-tool-bar-container">
+            <div id="menu" class="top-tool-bar-container">
               <div class="day-logo">
                 <span class="material-symbols-rounded"> wb_sunny </span>
               </div>
