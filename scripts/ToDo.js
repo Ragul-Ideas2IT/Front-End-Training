@@ -30,7 +30,6 @@ function currentDate() {
     monthlist[today.getMonth()] +
     " " +
     today.getDate();
-  // console.log(date);
   document.getElementById("today-date").innerHTML = date;
 }
 
@@ -57,6 +56,6 @@ function addTask() {
   });
 }
 
-function changeMenu(id) {
-  document.getElementById('menu').innerHTML = id;
+function task(id) {
+  document.getElementById('menu').innerHTML = id.innerHTML;
 }
