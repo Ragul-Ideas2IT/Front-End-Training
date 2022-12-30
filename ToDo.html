@@ -45,7 +45,7 @@
       <div class="bottom-container">
         <div class="side-container">
           <div class="side-header-container">
-            <span class="material-symbols-rounded"> menu </span>
+            <span class="material-symbols-rounded" onclick="hideSideMenu()"> menu </span>
           </div>
           <ol id="task-list">
             <div>
@@ -84,10 +84,10 @@
                 <span id="add" class="material-symbols-rounded"> add </span>
                 <div>
                   <input
-                    id="task-input"
+                    id="tasklist-input"
                     type="text"
                     placeholder="New list"
-                    onmousedown="addTask()"
+                    onmousedown="addTaskList()"
                   />
                 </div>
                 <span class="material-symbols-rounded"> group_add </span>
@@ -132,15 +132,22 @@
           <div class="task-container">
             <div class="add-task-container">
               <div></div>
-              <div class="task-detail">
-                <input type="text" placeholder="Add a task" />
+              <div id="addTask" class="task-detail">
+                <input
+                  id="task-input"
+                  type="text"
+                  placeholder="Add a task"
+                  onmousedown="addTask()"
+                />
               </div>
             </div>
             <div class="add-task-creation-container">
               <span class="material-symbols-rounded"> calendar_month </span>
               <span class="material-symbols-rounded"> notifications </span>
               <span class="material-symbols-rounded"> repeat </span>
+              <button onclick="addTaskInHtml()">Add</button>
             </div>
+            <div id="tasks"></div>
           </div>
         </div>
       </div>
