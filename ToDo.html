@@ -45,54 +45,26 @@
       <div class="bottom-container">
         <div class="side-container">
           <div class="side-header-container">
-            <span class="material-symbols-rounded" onclick="hideSideMenu()"> menu </span>
+            <span class="material-symbols-rounded" onclick="hideSideMenu()">
+              menu
+            </span>
           </div>
           <ol id="task-list">
-            <div>
-              <li class="side-menu-option-container" onclick="task(this)">
-                <span class="material-symbols-rounded"> wb_sunny </span>
-                <div class="menu-detail">
-                  <p>My Day</p>
-                </div>
-              </li>
-              <li class="side-menu-option-container" onclick="task(this)">
-                <span class="material-symbols-rounded"> star </span>
-                <div class="menu-detail">
-                  <p>Important</p>
-                </div>
-              </li>
-              <li class="side-menu-option-container" onclick="task(this)">
-                <span class="material-symbols-rounded"> calendar_month </span>
-                <div class="menu-detail">
-                  <p>Planned</p>
-                </div>
-              </li>
-              <li class="side-menu-option-container" onclick="task(this)">
-                <span class="material-symbols-rounded"> person </span>
-                <div class="menu-detail">
-                  <p>Assigned to me</p>
-                </div>
-              </li>
-              <li class="side-menu-option-container" onclick="task(this)">
-                <span class="material-symbols-rounded"> home </span>
-                <div class="menu-detail">
-                  <p>Tasks</p>
-                </div>
-              </li>
-              <hr />
-              <li class="task-adder">
-                <span id="add" class="material-symbols-rounded"> add </span>
-                <div>
-                  <input
-                    id="tasklist-input"
-                    type="text"
-                    placeholder="New list"
-                    onmousedown="addTaskList()"
-                  />
-                </div>
-                <span class="material-symbols-rounded"> group_add </span>
-              </li>
-            </div>
+            <p id="side-menu"></p>
+            <hr />
+            <p id="task-list-menu"></p>
+            <li class="task-adder">
+              <span id="add" class="material-symbols-rounded"> add </span>
+              <div>
+                <input
+                  id="tasklist-input"
+                  type="text"
+                  placeholder="New list"
+                  onmousedown="addTaskList()"
+                />
+              </div>
+              <span class="material-symbols-rounded"> group_add </span>
+            </li>
           </ol>
           <div class="bottom-logo-container">
             <div class="logo-container">
@@ -131,7 +103,11 @@
           </div>
           <div class="task-container">
             <div class="add-task-container">
-              <div></div>
+              <div class="check-container">
+                <span class="material-symbols-rounded"
+                  >radio_button_unchecked</span
+                >
+              </div>
               <div id="addTask" class="task-detail">
                 <input
                   id="task-input"
@@ -145,7 +121,9 @@
               <span class="material-symbols-rounded"> calendar_month </span>
               <span class="material-symbols-rounded"> notifications </span>
               <span class="material-symbols-rounded"> repeat </span>
-              <button onclick="addTaskInHtml()">Add</button>
+              <div class="add-button-container">
+                <button onclick="addTaskInHtml()">Add</button>
+              </div>
             </div>
             <div id="tasks"></div>
           </div>
