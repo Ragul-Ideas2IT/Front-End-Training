@@ -12,7 +12,7 @@
     <div class="container">
       <div class="top-container">
         <div class="all-apps-button-container">
-          <span class="material-symbols-rounded"> apps </span>
+          <span class="material-symbols-rounded">apps</span>
         </div>
         <div class="todo-container">
           <p>To Do</p>
@@ -45,23 +45,16 @@
       <div class="bottom-container">
         <div id="show-menu" class="side-container">
           <div class="side-header-container">
-            <span class="material-symbols-rounded" onclick="hideSideMenu()">
+            <span id="show-hide" class="material-symbols-rounded">
               menu
             </span>
           </div>
           <ol id="task-list">
             <p id="side-menu"></p>
-            <hr />
-            <p id="task-list-menu"></p>
             <li class="task-adder">
               <span id="add" class="material-symbols-rounded"> add </span>
               <div>
-                <input
-                  id="tasklist-input"
-                  type="text"
-                  placeholder="New list"
-                  onmousedown="addTaskList()"
-                />
+                <input id="tasklist-input" type="text" placeholder="New list" />
               </div>
               <span class="material-symbols-rounded"> group_add </span>
             </li>
@@ -88,9 +81,9 @@
           <div class="top-header-container">
             <div class="top-tool-bar-container">
               <div id="menu" class="day-logo">
-                <span class="material-symbols-rounded"> wb_sunny </span>
+                <span id="content-icon" class="material-symbols-rounded">wb_sunny</span>
                 <div class="my-day">
-                  <p>My Day</p>
+                  <p id="content-category">My Day</p>
                 </div>
               </div>
               <div class="more-logo">
@@ -109,12 +102,7 @@
                 >
               </div>
               <div id="addTask" class="task-detail">
-                <input
-                  id="task-input"
-                  type="text"
-                  placeholder="Add a task"
-                  onmousedown="addTask()"
-                />
+                <input id="task-input" type="text" placeholder="Add a task" />
               </div>
             </div>
             <div class="add-task-creation-container">
@@ -122,7 +110,7 @@
               <span class="material-symbols-rounded"> notifications </span>
               <span class="material-symbols-rounded"> repeat </span>
               <div class="add-button-container">
-                <button onclick="addTask()">Add</button>
+                <button id="add">Add</button>
               </div>
             </div>
             <div id="tasks"></div>
