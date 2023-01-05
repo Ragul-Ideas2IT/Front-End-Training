@@ -1,6 +1,7 @@
 body,
 p,
-ol{
+ol,
+hr {
   margin: 0;
 }
 
@@ -123,7 +124,8 @@ ol{
   height: 913px;
   display: inline-block;
   vertical-align: top;
-  border-right: 1px groove rgb(224, 222, 222);
+  /* box-shadow: 2px 0px #faf9f8; */
+  /* border-right: 1px groove rgb(224, 222, 222); */
 }
 
 .side-container ol {
@@ -134,10 +136,12 @@ ol{
 }
 
 .main-container {
-  width: 1551px;
+  width: 1190px;
   height: 913px;
   display: inline-block;
+  vertical-align: top;
   background-color: #faf9f8;
+  /* background-color: #2564cf; */
 }
 
 .side-header-container {
@@ -171,16 +175,9 @@ ol{
 }
 
 .side-container li {
-  width: 290px;
+  width: 286px;
   height: 44px;
   display: inline-block;
-}
-
-.all-apps-button-container:hover,
-li:hover,
-.logo-container:hover,
-.task-adder:hover {
-  background-color: rgb(228, 226, 226);
 }
 
 .task-adder {
@@ -192,7 +189,7 @@ li:hover,
 .task {
   padding-left: 10px;
   padding-top: 10px;
-  width: 1310px;
+  width: 1040px;
   vertical-align: middle;
   /* height: 44px; */
   display: inline-block;
@@ -205,14 +202,6 @@ li:hover,
   font-size: 20px;
   display: inline-block;
 }
-
-/* .task-input {
-  display: inline-block;
-  height: 40px;
-  width: 180px;
-  vertical-align: top;
-  padding-top: 6px;
-} */
 
 #tasklist-input {
   display: inline-block;
@@ -250,6 +239,7 @@ li:hover,
   color: rgb(59, 59, 59);
   padding-top: 14px;
   padding-bottom: 14px;
+  padding-right: 0px;
   font-size: 20px;
 }
 
@@ -257,21 +247,21 @@ li:hover,
   transform: rotate(40deg);
 }
 .top-header-container {
-  width: 1552px;
+  width: 1190px;
   height: 90px;
   display: inline-block;
 }
 
 .task-container {
   /* background-color: dodgerblue; */
-  width: 1552px;
+  width: 1190px;
   height: 809px;
   display: inline-block;
 }
 
 .top-tool-bar-container {
   /* background-color: deeppink; */
-  width: 1552px;
+  width: 1190px;
   height: 48px;
   display: inline-block;
   margin-top: 14px;
@@ -297,7 +287,7 @@ li:hover,
 .add-button-container {
   display: inline-block;
   vertical-align: top;
-  padding-left: 1220px;
+  padding-left: 972px;
 }
 
 #side-menu {
@@ -324,7 +314,7 @@ li:hover,
 
 .top-tool-bar-subline-container {
   /* background-color: greenyellow; */
-  width: 1552px;
+  width: 1190px;
   height: 21px;
   display: inline-block;
 }
@@ -348,7 +338,7 @@ li:hover,
   background-color: white;
   /* display: inline-block; */
   padding: 0 10px;
-  width: 1410px;
+  width: 1130px;
   height: 52px;
   display: inline-block;
   margin-top: 16px;
@@ -378,11 +368,7 @@ li:hover,
 }
 
 #filled {
-    font-variation-settings:
-    'FILL' 1,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 48
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
 }
 
 .task-detail {
@@ -410,7 +396,7 @@ li:hover,
 .add-task-creation-container {
   /* background-color: mediumorchid; */
   padding: 0 10px;
-  width: 1410px;
+  width: 1130px;
   height: 45px;
   margin-left: 20px;
   border-radius: 4px;
@@ -419,30 +405,176 @@ li:hover,
     0px 1.6px 3.6px rgba(0, 0, 0, 0.1);
   display: inline-block;
 }
-.add-task-creation-container button {
+#add-button {
   width: 50px;
   height: 35px;
   vertical-align: top;
   margin-top: 5px;
   background-color: white;
+  border: solid 1px #edebe9;
 }
 
 .add-task-creation-container .material-symbols-rounded {
   margin-left: 10px;
 }
 
-.material-symbols-rounded {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 300,
-  'GRAD' 0,
-  'opsz' 48
-}
-
+#show-right-menu,
 #show-menu {
   display: inline-block;
 }
 
+#hide-right-menu,
 #hide-menu {
   display: none;
 }
+
+.category-selected {
+  background-color: #eff6fc;
+  border-left: 2px solid #2564cf;
+  font-weight: bolder;
+  width: 286px;
+}
+
+.category-selected:hover {
+  background-color: #eff6fc;
+}
+
+.all-apps-button-container:hover,
+li:hover,
+.logo-container:hover,
+.task-adder:hover,
+#tasks > div:hover {
+  background-color: #f5f5f5;
+}
+
+.right-side-container {
+  /* background-color: aqua; */
+  width: 352px;
+  height: 913px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.details-body {
+  display: inline-block;
+  /* background-color: crimson; */
+  vertical-align: top;
+  width: 312px;
+  margin-top: 16px;
+  padding-left: 24px;
+  padding-right: 16px;
+  height: 833px;
+}
+
+.detail-header {
+  /* display: inline-block; */
+  background-color: aliceblue;
+  vertical-align: top;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 16px;
+  border-radius: 5px;
+}
+
+.steps {
+  /* display: inline-block; */
+  /* background-color: rgb(24, 67, 104); */
+  vertical-align: top;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 16px;
+  border-radius: 5px;
+}
+
+.section {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 16px;
+  border-radius: 5px;
+  background-color: #faf9f8;
+  /* background-color: #2564cf; */
+}
+
+.section-remind {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 5px;
+  background-color: #faf9f8;
+}
+.right-side-container .material-symbols-rounded {
+  color: rgb(59, 59, 59);
+  margin-left: 0px;
+  font-size: 20px;
+  /* padding-left: 10px; */
+}
+
+.task-clicked {
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 10px;
+  padding-left: 16px;
+  width:200px
+}
+
+.translate {
+  transform: scaleX(-1);
+}
+
+.rotate {
+  transform: rotate(40deg);
+}
+
+#task-notes,
+#task-steps-input {
+  display: inline-block;
+  width: 150px;
+  border: 0;
+  background: none;
+  outline: none;
+}
+
+.task-step-input {
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 10px;
+}
+
+.detail-description {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 12px;
+  font-size: 12px;
+}
+
+.section-item {
+  font-size: 12px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.right-check-container {
+  display: inline-block;
+  vertical-align: bottom;
+}
+hr {
+  border-width: 1px;
+  color: #fbfbfb;
+}
+
+.right-star-container {
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 10px;
+  padding-top: 10px;
+  color: #2564cf;
+}
+
+.task-notes input::placeholder {
+  color: black;
+}
+.material-symbols-rounded {
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 48;
+}
+

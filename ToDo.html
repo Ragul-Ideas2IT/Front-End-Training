@@ -45,9 +45,7 @@
       <div class="bottom-container">
         <div id="show-menu" class="side-container">
           <div class="side-header-container">
-            <span id="show-hide" class="material-symbols-rounded">
-              menu
-            </span>
+            <span id="show-hide" class="material-symbols-rounded"> menu </span>
           </div>
           <ol id="task-list">
             <p id="side-menu"></p>
@@ -81,7 +79,9 @@
           <div class="top-header-container">
             <div class="top-tool-bar-container">
               <div id="menu" class="day-logo">
-                <span id="content-icon" class="material-symbols-rounded">wb_sunny</span>
+                <span id="content-icon" class="material-symbols-rounded"
+                  >wb_sunny</span
+                >
                 <div class="my-day">
                   <p id="content-category">My Day</p>
                 </div>
@@ -110,10 +110,66 @@
               <span class="material-symbols-rounded"> notifications </span>
               <span class="material-symbols-rounded"> repeat </span>
               <div class="add-button-container">
-                <button id="add">Add</button>
+                <button id="add-button">Add</button>
               </div>
             </div>
             <div id="tasks"></div>
+          </div>
+        </div>
+        <div id="hide-right-menu" class="right-side-container">
+          <div class="details-body">
+            <div id="task-name" class="detail-header"></div>
+            <div class="steps">
+              <span class="material-symbols-rounded"> add </span>
+              <div class="task-step-input">
+                <input id="task-steps-input" type="text" placeholder="Add steps" />
+              </div>
+            </div>
+            <div class="section">
+              <span class="material-symbols-rounded"> wb_sunny </span>
+              <div class="detail-description">
+                <p>Add to My Day</p>
+              </div>
+            </div>
+            <div class="section-remind">
+              <div class="section-item">
+                <span class="material-symbols-rounded"> notifications </span>
+                <div class="detail-description">
+                  <p>Remind me</p>
+                </div>
+              </div>
+              <hr />
+              <div class="section-item">
+                <span class="material-symbols-rounded"> calendar_month </span>
+                <div class="detail-description">
+                  <p>Add due date</p>
+                </div>
+              </div>
+              <hr />
+              <div class="section-item">
+                <span class="material-symbols-rounded"> repeat </span>
+                <div class="detail-description">
+                  <p>Repeat</p>
+                </div>
+              </div>
+            </div>
+            <div class="section">
+              <span class="material-symbols-rounded translate"> sell </span>
+              <div class="detail-description">
+                <p>Pick a category</p>
+              </div>
+            </div>
+            <div class="section">
+              <span class="material-symbols-rounded rotate"> attach_file </span>
+              <div class="detail-description">
+                <p>Add file</p>
+              </div>
+            </div>
+            <div class="section">
+              <div class="detail-description">
+                <input id="task-notes" type="text" placeholder="Add note" />
+              </div>
+            </div>
           </div>
         </div>
       </div>

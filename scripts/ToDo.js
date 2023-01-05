@@ -8,15 +8,18 @@
     categoryRendering();
     tasksRendering();
     eventListener();
+    // renderTaskDetail();
   }
 
-  var selectedCategory = "My Day";
   var taskListInput = document.getElementById("tasklist-input");
   var taskInput = document.getElementById("task-input");
   var taskList = document.getElementById("side-menu");
   var showHide = document.getElementById("show-hide");
   var inputFromUser = document.getElementById("task-input");
-  var add = document.getElementById("add");
+  var addButton = document.getElementById("add-button");
+  var taskName = document.getElementById("task-name");
+  var previousTarget;
+  var currentTarget;
   var tasks = [];
   var category = [
     {
@@ -45,12 +48,14 @@
       icon: "home",
     },
   ];
+  var selectedCategory = category[0];
+  var selectedTask;
 
   function eventListener() {
     taskInput.addEventListener("keypress", addTaskEvent);
     taskListInput.addEventListener("keypress", addTaskListEvent);
     showHide.addEventListener("click", hideSideMenu);
-    add.addEventListener("click", addTaskEvent);
+    addButton.addEventListener("mousedown", addTaskEvent);
   }
 
   /**
@@ -63,69 +68,40 @@
       var span = document.createElement("span");
       var div = document.createElement("div");
       var p = document.createElement("p");
+      var taskCount = getCountOfTasksPerCategory(element.name);
       list.id = element.id;
       list.className = "side-menu-option-container";
-      list.addEventListener("click", selectedTask);
+      list.addEventListener("click", passSelectedCategoryEvent);
       span.className = "material-symbols-rounded";
       span.appendChild(document.createTextNode(element.icon));
       div.className = "menu-detail";
-      p.appendChild(document.createTextNode(element.name));
+      p.appendChild(
+        document.createTextNode(
+          element.name + " " + (taskCount > 0 ? taskCount : "")
+        )
+      );
       div.appendChild(p);
       list.appendChild(span);
       list.appendChild(div);
       taskList.appendChild(list);
     }
+    selectCategory();
   }
 
   function tasksRendering() {
     for (let index = 0; index < tasks.length; index++) {
       const element = tasks[index];
+      var subCategory;
       var sublineDiv = document.createElement("div");
       sublineDiv.className = "sub-line-task";
-      if (element.categories.includes(selectedCategory)) {
-        sublineDiv.appendChild(document.createTextNode(element.categories));
+      if (
+        element.categories.includes(selectedCategory.name) ||
+        (selectedCategory.name == "Important" && element.isUnderImportant)
+      ) {
+        subCategory = element.categories.filter(checkCategory);
+        sublineDiv.appendChild(document.createTextNode(subCategory));
         renderTask(element, sublineDiv);
       }
-      // for (let index1 = 0; index1 < element.categories.length; index1++) {
-      //   const element1 = element.categories[index1];
-      //   if (selectedCategory == element1) {
-      //       if(element1 == "Important") {
-      //         sublineDiv.appendChild(document.createTextNode("Important"));
-      //       }
-      //       if(element1 == "My Day") {
-      //         sublineDiv.appendChild(document.createTextNode("My Day"));
-      //       }
-      //       if(element1 == "Tasks") {
-      //         sublineDiv.appendChild(document.createTextNode("Tasks"));
-      //       }
-      //     // sublineDiv.appendChild(document.createTextNode(element1));
-      //     renderTask(element, sublineDiv);
-      //   }
-      // }
-      // if(selectedCategory == element.category) {
-      //   if(element.isUnderImportant) {
-      //     sublineDiv.appendChild(document.createTextNode("Important"));
-      //   }
-      //   if(element.isUnderMyDay) {
-      //     sublineDiv.appendChild(document.createTextNode("My Day"));
-      //   }
-      //   if(element.isUnderTasks) {
-      //     sublineDiv.appendChild(document.createTextNode("Tasks"));
-      //   }
-      //   renderTask(element, sublineDiv);
-      // }
-      // if ((selectedCategory == "Important" && element.category == "Important") || element.isUnderImportant) {
-      //   sublineDiv.appendChild(document.createTextNode("Imp"));
-      //   renderTask(element, sublineDiv);
-      // }
-      // if ((selectedCategory == "My Day" && element.category == "My Day") || element.isUnderMyDay) {
-      //   sublineDiv.appendChild(document.createTextNode("My day"));
-      //   renderTask(element, sublineDiv);
-      // }
-      // if ((selectedCategory == "Tasks" && element.category == "Tasks") || element.isUnderTasks) {
-      //   sublineDiv.appendChild(document.createTextNode("Tasks"));
-      //   renderTask(element, sublineDiv);
-      // }
     }
   }
 
@@ -140,19 +116,34 @@
     var radio_button_unchecked = document.createTextNode(
       "radio_button_unchecked"
     );
+    var check_circle = document.createTextNode("check_circle");
     var inputFromUserNode = document.createTextNode(element.name);
     var star = document.createTextNode("star");
+    div.id = element.taskId;
     taskParentDiv.className = "task";
     taskDiv.className = "task-added";
     checkDiv.className = "check-container";
     starDiv.className = "star-container";
+    checkSpan.setAttribute("taskId", element.taskId);
+    starSpan.setAttribute("taskId", element.taskId);
     checkSpan.className = "material-symbols-rounded";
     starSpan.className = "material-symbols-rounded";
-    starSpan.id = "";
-    checkSpan.appendChild(radio_button_unchecked);
+    if (element.isUnderImportant) {
+      starSpan.id = "filled";
+    } else {
+      starSpan.id = "";
+    }
+    if (element.isCompleted) {
+      checkSpan.id = "filled";
+      checkSpan.appendChild(check_circle);
+    } else {
+      checkSpan.id = "";
+      checkSpan.appendChild(radio_button_unchecked);
+    }
+    div.addEventListener("click", showRightSideMenu);
+    starSpan.addEventListener("click", makeImportant);
     starSpan.appendChild(star);
     checkSpan.addEventListener("click", makeTaskCompleted);
-    starSpan.addEventListener("click", makeImportant);
     taskDiv.appendChild(inputFromUserNode);
     var newTask = document.getElementById("tasks");
     checkDiv.appendChild(checkSpan);
@@ -215,7 +206,6 @@
     if (event.key === "Enter") {
       var inputFromUser = document.getElementById("tasklist-input").value;
       var categoryLength = category.length;
-      console.log(categoryLength);
       if (inputFromUser.trim() == "") {
         category.push({
           id: ++categoryLength,
@@ -230,9 +220,117 @@
         });
       }
       document.getElementById("side-menu").innerHTML = "";
+      selectedCategory = category[category.length - 1];
       categoryRendering();
       taskListInput.value = "";
     }
+  }
+
+  function passSelectedCategoryEvent(event) {
+    selectedCategory = category[event.target.id - 1];
+    selectCategory();
+  }
+
+  function selectCategory() {
+    previousTarget = currentTarget;
+    currentTarget = document.getElementById(selectedCategory.id);
+    if (previousTarget != undefined) {
+      previousTarget.classList.remove("category-selected");
+    }
+    currentTarget.classList.add("category-selected");
+    var name = selectedCategory.name;
+    var icon = selectedCategory.icon;
+    document.getElementById("content-icon").innerHTML = icon;
+    document.getElementById("content-category").innerHTML = name;
+    document.title = name + " - To Do";
+    document.getElementById("tasks").innerHTML = "";
+    tasksRendering();
+  }
+
+  function addTaskEvent(event) {
+    if (event.key === "Enter" || event.button == 0) {
+      if (inputFromUser.value.trim() != "") {
+        var tasksLength = tasks.length;
+        var tasksElement = {
+          taskId: ++tasksLength,
+          name: inputFromUser.value,
+          isUnderImportant: false,
+          isCompleted: false,
+          categories: [],
+        };
+        switch (selectedCategory.name) {
+          case "Important":
+            tasksElement.isUnderImportant = true;
+            tasksElement.categories.push("Tasks");
+            break;
+          case "My Day":
+            tasksElement.categories.push("My Day");
+            tasksElement.categories.push("Tasks");
+            break;
+          case "Tasks":
+            tasksElement.categories.push("Tasks");
+            break;
+          default:
+            tasksElement.categories.push(selectedCategory.name);
+        }
+        tasks.push(tasksElement);
+        document.getElementById("tasks").innerHTML = "";
+        tasksRendering();
+        taskInput.value = "";
+        document.getElementById("side-menu").innerHTML = "";
+        categoryRendering();
+      }
+    }
+  }
+
+  function getCountOfTasksPerCategory(categoryForCount) {
+    var count = 0;
+    for (let index = 0; index < tasks.length; index++) {
+      const element = tasks[index];
+      if (!element.isCompleted) {
+        if (
+          element.categories.includes(categoryForCount) ||
+          (categoryForCount == "Important" && element.isUnderImportant)
+        ) {
+          count++;
+        }
+      }
+    }
+    return count;
+  }
+
+  function checkCategory(category) {
+    return category != selectedCategory.name;
+  }
+
+  function makeImportant(event) {
+    var target = event.target;
+    var targetTaskId = target.attributes.taskId.value;
+    if (target.id == "filled") {
+      target.id = "";
+      tasks[targetTaskId - 1].isUnderImportant = false;
+    } else {
+      target.id = "filled";
+      tasks[targetTaskId - 1].isUnderImportant = true;
+    }
+    document.getElementById("side-menu").innerHTML = "";
+    categoryRendering();
+  }
+
+  function makeTaskCompleted(event) {
+    var target = event.target;
+    var targetTaskId = target.attributes.taskId.value;
+    if (target.id == "filled") {
+      target.innerHTML = "radio_button_unchecked";
+      target.id = "";
+      tasks[targetTaskId - 1].isCompleted = false;
+    } else {
+      target.id = "filled";
+      target.innerHTML = "check_circle";
+      tasks[targetTaskId - 1].isCompleted = true;
+    }
+    document.getElementById("side-menu").innerHTML = "";
+    categoryRendering();
   }
 
   /**
@@ -251,82 +349,56 @@
    */
   function showSideMenu() {
     var hide = document.getElementById("hide-menu");
+    var contentIcon = document.getElementById("content-icon");
+    contentIcon.innerHTML = selectedCategory.icon;
     hide.id = "show-menu";
   }
 
-  function selectedTask(event) {
-    var id = event.target.id;
-    var title = category[id - 1].name;
-    var icon = category[id - 1].icon;
-    document.getElementById("content-icon").innerHTML = icon;
-    document.getElementById("content-category").innerHTML = title;
-    selectedCategory = title;
-    document.title = title;
-    document.getElementById("tasks").innerHTML = "";
-    tasksRendering();
+  function showRightSideMenu(event) {
+    var rightHide = document.getElementById("hide-right-menu");
+    rightHide.id = "show-right-menu";
+    renderTaskDetail(event);
   }
-
-  function addTaskEvent(event) {
-    console.log(event.key);
-    if (event.key === "Enter") {
-      if (inputFromUser.value.trim() != "") {
-        var tasksElement = {
-          name: inputFromUser.value,
-          categories: [],
-        };
-        switch (selectedCategory) {
-          case "Important":
-            tasksElement.categories.push("Important");
-            tasksElement.categories.push("Tasks");
-            break;
-          case "My Day":
-            tasksElement.categories.push("My Day");
-            tasksElement.categories.push("Tasks");
-            break;
-          case "Tasks":
-            tasksElement.categories.push("Tasks");
-            break;
-          default:
-            tasksElement.categories.push(selectedCategory);
-        }
-        tasks.push(tasksElement);
-        document.getElementById("tasks").innerHTML = "";
-        tasksRendering();
-        taskInput.value = "";
-      }
+  function renderTaskDetail(event) {
+    var taskDiv = document.createElement("div");
+    var checkDiv = document.createElement("div");
+    var starDiv = document.createElement("div");
+    var starSpan = document.createElement("span");
+    var checkSpan = document.createElement("span");
+    var radio_button_unchecked = document.createTextNode(
+      "radio_button_unchecked"
+    );
+    console.log(event.target);
+    selectedTask = tasks[event.target.id - 1];
+    var check_circle = document.createTextNode("check_circle");
+    var inputFromUserNode = document.createTextNode(selectedTask.name);
+    var star = document.createTextNode("star");
+    taskDiv.className = "task-clicked";
+    checkDiv.className = "right-check-container";
+    starDiv.className = "right-star-container";
+    checkSpan.className = "material-symbols-rounded";
+    starSpan.className = "material-symbols-rounded";
+    if (selectedTask.isUnderImportant) {
+      starSpan.id = "filled";
+    } else {
+      starSpan.id = "";
     }
-  }
-
-  function makeImportant(event) {
-    var id = event.target;
-    id.id = "filled";
-    id.removeEventListener("click", makeImportant);
-    id.addEventListener("click", makeUnimportant);
-  }
-  
-  function makeUnimportant(event) {
-    var id = event.target;
-    id.id = "";
-    id.removeEventListener("click", makeUnimportant);
-    id.addEventListener("click", makeImportant);
-  }
-  
-  function makeTaskCompleted(event) {
-    var id = event.target;
-    id.innerHTML = "check_circle";
-    id.id = "filled";
-    id.removeEventListener("click", makeTaskCompleted);
-    id.addEventListener("click", makeTaskNotCompleted);
-  }
-  
-  function makeTaskNotCompleted(event) {
-    var id = event.target;
-    id.innerHTML = "radio_button_unchecked";
-    id.id = "";
-    id.removeEventListener("click", makeTaskNotCompleted);
-    id.addEventListener("click", makeTaskCompleted);
+    if (selectedTask.isCompleted) {
+      checkSpan.id = "filled";
+      checkSpan.appendChild(check_circle);
+    } else {
+      checkSpan.id = "";
+      checkSpan.appendChild(radio_button_unchecked);
+    }
+    starSpan.addEventListener("click", makeImportant);
+    starSpan.appendChild(star);
+    checkSpan.addEventListener("click", makeTaskCompleted);
+    taskDiv.appendChild(inputFromUserNode);
+    checkDiv.appendChild(checkSpan);
+    starDiv.appendChild(starSpan);
+    taskName.appendChild(checkDiv);
+    taskName.appendChild(taskDiv);
+    taskName.appendChild(starDiv);
   }
   init();
 })();
-
-
