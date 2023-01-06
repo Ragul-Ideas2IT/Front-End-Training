@@ -137,11 +137,24 @@ hr {
 
 .main-container {
   width: 1190px;
+  /* max-width: 1552px; */
   height: 913px;
   display: inline-block;
   vertical-align: top;
   background-color: #faf9f8;
   /* background-color: #2564cf; */
+}
+
+.max-main-width {
+  width: 1832px;
+}
+
+.menu-hide-main-width {
+  width: 1480px;
+}
+
+.min-main-width {
+  width: 1190px;
 }
 
 .side-header-container {
@@ -157,7 +170,7 @@ hr {
   margin-top: 12px;
 }
 
-.task .material-symbols-rounded,
+.task-holder .material-symbols-rounded,
 .side-container li .material-symbols-rounded {
   color: rgb(59, 59, 59);
   margin-left: 24px;
@@ -186,12 +199,12 @@ hr {
   display: inline-block;
 }
 
-.task {
+.task-holder {
   padding-left: 10px;
   padding-top: 10px;
   width: 1040px;
   vertical-align: middle;
-  /* height: 44px; */
+  font-size: 13px;
   display: inline-block;
 }
 
@@ -328,12 +341,12 @@ hr {
   margin: 0;
 }
 
-#tasks {
+.tasks {
   overflow-y: scroll;
   height: 685px;
 }
 
-.task-container #tasks > div,
+.task-container .tasks > div,
 .add-task-container {
   background-color: white;
   /* display: inline-block; */
@@ -363,8 +376,6 @@ hr {
   padding-left: 10px;
   padding-top: 10px;
   color: #2564cf;
-  /* background-color: #2564cf; */
-  /* padding-left: 1220px; */
 }
 
 #filled {
@@ -394,13 +405,11 @@ hr {
   color: #2564cf;
 }
 .add-task-creation-container {
-  /* background-color: mediumorchid; */
   padding: 0 10px;
   width: 1130px;
   height: 45px;
   margin-left: 20px;
   border-radius: 4px;
-  /* border: 2px groove rgb(224, 222, 222); */
   box-shadow: 0px 0.3px 0.9px rgba(0, 0, 0, 0.1),
     0px 1.6px 3.6px rgba(0, 0, 0, 0.1);
   display: inline-block;
@@ -435,79 +444,98 @@ hr {
   width: 286px;
 }
 
+.all-apps-button-container:hover,
+li:hover,
+.logo-container:hover,
+#task-name:hover,
+.tasks > div:hover,
+.detail-header :hover,
+.section:hover,
+.section-item:hover {
+  background-color: #f5f5f5;
+}
+
+.task-selected {
+  /* background-color: #eff6fc; */
+  background-color: #2564cf;
+  font-weight: bolder;
+}
+
+/* .task-selected:hover, */
 .category-selected:hover {
   background-color: #eff6fc;
 }
 
-.all-apps-button-container:hover,
-li:hover,
-.logo-container:hover,
-.task-adder:hover,
-#tasks > div:hover {
-  background-color: #f5f5f5;
-}
-
 .right-side-container {
-  /* background-color: aqua; */
+  box-shadow: 0px 0.3px 8px rgba(0, 0, 0, 0.1),
+    0px 1.6px 3.6px rgba(0, 0, 0, 0.1);
   width: 352px;
   height: 913px;
   display: inline-block;
   vertical-align: top;
+  background-color: #faf9f8;
 }
 
 .details-body {
   display: inline-block;
-  /* background-color: crimson; */
   vertical-align: top;
   width: 312px;
-  margin-top: 16px;
-  padding-left: 24px;
+  padding-left: 21px;
   padding-right: 16px;
-  height: 833px;
+  height: 852px;
 }
 
 .detail-header {
-  /* display: inline-block; */
-  background-color: aliceblue;
   vertical-align: top;
-  margin-top: 8px;
-  margin-bottom: 8px;
   padding: 16px;
   border-radius: 5px;
+  background-color: white;
+  margin-top: 8px;
 }
 
 .steps {
-  /* display: inline-block; */
-  /* background-color: rgb(24, 67, 104); */
   vertical-align: top;
-  margin-top: 8px;
-  margin-bottom: 8px;
   padding: 16px;
   border-radius: 5px;
+  background-color: white;
+  margin-bottom: 8px;
 }
 
 .section {
-  margin-top: 8px;
-  margin-bottom: 8px;
   padding: 16px;
   border-radius: 5px;
-  background-color: #faf9f8;
-  /* background-color: #2564cf; */
+  background-color: white;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
+.bottom-section {
+  padding-left: 24px;
+  padding-right: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.right-side-container .star-container,
+.right-side-container .check-container {
+  padding-left: 0;
+  padding-bottom: 0;
+}
 .section-remind {
   margin-top: 8px;
   margin-bottom: 8px;
   padding-left: 16px;
   padding-right: 16px;
   border-radius: 5px;
-  background-color: #faf9f8;
+  background-color: white;
 }
-.right-side-container .material-symbols-rounded {
+.section .material-symbols-rounded,
+.section-remind .material-symbols-rounded {
   color: rgb(59, 59, 59);
   margin-left: 0px;
   font-size: 20px;
-  /* padding-left: 10px; */
 }
 
 .task-clicked {
@@ -515,7 +543,7 @@ li:hover,
   vertical-align: top;
   padding-top: 10px;
   padding-left: 16px;
-  width:200px
+  width: 216px;
 }
 
 .translate {
@@ -541,6 +569,11 @@ li:hover,
   padding-left: 10px;
 }
 
+.details-body .section:last-child {
+  height: 50px;
+  padding-left: 4px;
+  outline: #a1a0a0;
+}
 .detail-description {
   display: inline-block;
   vertical-align: top;
@@ -550,8 +583,8 @@ li:hover,
 
 .section-item {
   font-size: 12px;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding-top: 13px;
+  padding-bottom: 13px;
 }
 
 .right-check-container {
@@ -571,10 +604,13 @@ hr {
   color: #2564cf;
 }
 
+#created-date {
+  width: 100px;
+  padding-left: 240px;
+}
 .task-notes input::placeholder {
   color: black;
 }
 .material-symbols-rounded {
   font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 48;
 }
-
